@@ -77,7 +77,7 @@ def get_hdr_hf(bdata, ver):
 
 
 # -----------------------------------------------------------------------------
-# get one HF packet
+# get one HF pachet
 # -----------------------------------------------------------------------------
 def get_one_packet(fin):
     
@@ -179,3 +179,6 @@ def get_one_packet(fin):
         return 0, 0, 0, 0, 0, ret, 0, 0
     else:
         return st_hdr_pri, st_hdr_sec, st_hdr_rpw, st_aux, st_hdr_hf, ret, hf_buff, hf_sz
+
+
+
