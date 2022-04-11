@@ -57,7 +57,7 @@ def get_hdr_rpw(bdata):
 # -----------------------------------------------------------------------------
 # decode AUX field
 # -----------------------------------------------------------------------------
-def get_aux(bdata, ver):
+def get_aux(bdata, sid, ver):
     ret = struct()
 
     if ver == 1:
@@ -65,12 +65,55 @@ def get_aux(bdata, ver):
     else:
         ret.hf_hdr_len = ((bdata[0] & 0xf0) >> 4) * 4
     
+    if sid == 0x42:
+        # HF raw data
+        # to be added
+        pass
+    elif sid == 0x43:
+        # radio-full mode
+        # to be added
+        pass
+    elif sid == 0x44:
+        # radio-burst mode (survey)
+        # to be added
+        pass
+    elif sid == 0x74:
+        # radio-burst mode (rich)
+        # to be added
+        pass
+    elif sid == 0x45:
+        # PSSR1 mode (survey)
+        # to be added
+        pass
+    elif sid == 0x75:
+        # PSSR1 mode (rich)
+        # to be added
+        pass
+    elif sid == 0x46:
+        # PSSR2 mode (survey)
+        # to be added
+        pass
+    elif sid == 0x76:
+        # PSSR2 mode (rich)
+        # to be added
+        pass
+    elif sid == 0x47:
+        # PSSR3 mode (survey)
+        # to be added
+        pass
+    elif sid == 0x77:
+        # PSSR3 mode (rich)
+        # to be added
+        pass
+    
     return ret
 # -----------------------------------------------------------------------------
 # decode HF header
 # -----------------------------------------------------------------------------
 def get_hdr_hf(bdata, ver):
     ret = struct()
+
+    # to be added
     
     return ret
 # -----------------------------------------------------------------------------
@@ -148,7 +191,7 @@ def get_one_packet(fin):
             if not buff:
                 ret.eof = 1
                 break
-            st_aux = get_aux(buff, st_hdr_rpw.sw_ver)
+            st_aux = get_aux(buff, st_hdr_rpw.sid, st_hdr_rpw.sw_ver)
 
             #------------------------------------------------------
             # read HF header
